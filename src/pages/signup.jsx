@@ -18,7 +18,7 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await api.post("/auth/signup", form);
+      await api.post("/api/auth/signup", form);
       toast.success("Account created successfully 🎉");
     } catch (err) {
       toast.error(err.response?.data?.message || "Signup failed ❌");
