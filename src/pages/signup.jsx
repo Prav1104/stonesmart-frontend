@@ -21,7 +21,7 @@ export default function Signup() {
       await api.post("/api/auth/signup", form);
       toast.success("Account created successfully 🎉");
     } catch (err) {
-      toast.error(err.response?.data?.message || "Signup failed ❌");
+      toast.error(err.response?.data?.message || "Signup Failed");
     }
   };
 
