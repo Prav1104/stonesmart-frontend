@@ -1,71 +1,81 @@
-import { useState } from "react";
-import { toast } from "react-toastify";
-import api from "../services/api";
-import "../styles/auth.css";
+import { useState } from "react"
+import { useNavigate, Link } from "react-router-dom"
+import { toast } from "react-toastify"
+import { useAuth } from "../context/AuthContext.jsx"
+import "../styles/auth.css"
 
 export default function Signup() {
   const [form, setForm] = useState({
     name: "",
     email: "",
     password: "",
-    role: "client",
-  });
+    role: "client" // default role
+  })
+
+  const navigate = useNavigate()
+  const { signup } = useAuth()
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+    setForm({ ...form, [e.target.name]: e.target.value })
+  }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await api.post("/api/auth/signup", form);
-      toast.success("Account created successfully 🎉");
-    } catch (err) {
-      toast.error(err.response?.data?.message || "Signup Failed");
+    e.preventDefault()
+
+    const res = await signup(form)
+
+    if (res.success) {
+      toast.success("Signup successful 🎉")
+      navigate("/dashboard")
+    } else {
+      toast.error(res.message || "Signup failed")
     }
-  };
+  }
 
   return (
     <div className="auth-container">
       <div className="auth-box">
-        <h2>Sign Up</h2>
+        <h2>Create Account</h2>
+
         <form onSubmit={handleSubmit}>
           <input
             type="text"
             name="name"
             placeholder="Full Name"
-            value={form.name}
             onChange={handleChange}
             required
           />
+
           <input
             type="email"
             name="email"
             placeholder="Email"
-            value={form.email}
             onChange={handleChange}
             required
           />
+
           <input
             type="password"
             name="password"
             placeholder="Password"
-            value={form.password}
             onChange={handleChange}
             required
           />
-          <select name="role" value={form.role} onChange={handleChange}>
+
+          {/* Optional role selector */}
+          <select name="role" onChange={handleChange} value={form.role}>
             <option value="client">Client</option>
             <option value="sales">Sales Rep</option>
             <option value="admin">Admin</option>
           </select>
+
           <button type="submit">Sign Up</button>
         </form>
+
         <p className="switch-link">
-          Already have an account? <a href="/">Login</a>
+          Already have an account? <Link to="/login">Login</Link>
         </p>
       </div>
     </div>
-  );
+  )
 }
-

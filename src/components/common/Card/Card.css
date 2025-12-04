@@ -1,0 +1,12 @@
+.card{
+  background:var(--card);
+  border-radius:var(--radius-md);
+  padding:16px;
+  box-shadow:var(--shadow);
+}
+.card__header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.card__header-title{font-size:14px;font-weight:700}
+.card__content{
+    font-size: 14px;
+}
+

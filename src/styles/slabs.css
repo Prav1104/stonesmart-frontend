@@ -1,0 +1,280 @@
+/* PAGE CONTAINER */
+.slabs-container {
+  padding: 30px;
+  background: #f4f6f9;
+  min-height: 100vh;
+}
+
+/* TOP BAR */
+.slabs-topbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.slab-search {
+  width: 280px;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.add-slab-btn {
+  padding: 10px 18px;
+  background: #1e73f8;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.add-slab-btn:hover {
+  background: #155ecc;
+}
+
+/* SORT */
+.sort-container {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.sort-btn {
+  background: none;
+  border: none;
+  color: #1e73f8;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.sort-btn:hover {
+  text-decoration: underline;
+}
+
+/* GRID */
+.slabs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* CARD UI */
+.slab-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;   /* thin elegant border */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.slab-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+
+.slab-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.slab-price {
+  font-size: 18px;
+  margin-top: 10px;
+  color: #0f172a; /* slate-900 */
+  font-weight: 700;
+}
+
+/* BUTTONS */
+.slab-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.edit-btn,
+.delete-btn {
+  flex: 1;
+  padding: 8px 0;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.edit-btn {
+  flex: 1;
+  padding: 8px 0;
+  border: none;
+  border-radius: 6px;
+  background: #3b82f6;  /* soft blue */
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.edit-btn:hover {
+  background: #2563eb;  /* deeper blue */
+}
+
+.delete-btn {
+  flex: 1;
+  padding: 8px 0;
+  border: none;
+  border-radius: 6px;
+  background: #ef4444; /* soft red */
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.delete-btn:hover {
+  background: #dc2626; /* deeper red */
+}
+
+/* RESPONSIVE GRID */
+@media (max-width: 1200px) {
+  .slabs-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .slabs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .slabs-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* MODAL OVERLAY */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+/* MODAL CONTENT */
+.modal-content {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+  width: 420px;
+  max-width: 92%;
+  border: 1px solid #e5e7eb;       /* thin professional border */
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  animation: fadeInUp 0.25s ease;
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* FORM CONTAINER */
+.slab-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.slab-form-title {
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+  text-align: center;
+}
+
+/* LABELS */
+.slab-label {
+  font-size: 14px;
+  margin-bottom: 6px;
+  margin-top: 10px;
+  color: #374151;
+  font-weight: 600;
+}
+
+/* INPUTS */
+.slab-form input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 15px;
+  background: #f9fafb;
+  transition: border 0.2s ease;
+}
+
+.slab-form input:focus {
+  border: 1px solid #2563eb;
+  outline: none;
+  background: white;
+}
+
+/* ACTION BUTTONS */
+.slab-form-actions {
+  margin-top: 22px;
+  display: flex;
+  gap: 12px;
+}
+
+.save-btn {
+  flex: 1;
+  padding: 10px 0;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s;
+}
+
+.save-btn:hover {
+  background: #1d4ed8;
+}
+
+.cancel-btn {
+  flex: 1;
+  padding: 10px 0;
+  border: none;
+  border-radius: 8px;
+  background: #e5e7eb;
+  color: #1f2937;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s;
+}
+
+.cancel-btn:hover {
+  background: #d1d5db;
+}

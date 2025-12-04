@@ -1,0 +1,14 @@
+.layout-container {
+  display: flex;
+}
+
+.main-content {
+  margin-left: 220px;
+  width: calc(100% - 220px);
+  min-height: 100vh;
+  background: #f3f4f6;
+}
+
+.content-wrapper {
+  padding: 25px;
+}
